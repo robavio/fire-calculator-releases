@@ -1,5 +1,6 @@
 {
-  "version": "1.0.0",
-  "notes": "Initial release",
-  "url": "https://github.com/robavio/fire-calculator-releases/releases/tag/v1.0.0"
+  "version": "1.6.0",
+  "notes": "Two-column layout, inflation fixes, Year 0, break-even on chart",
+  "url": "https://github.com/robavio/fire-calculator-releases/releases/tag/v1.6.0",
+  "downloadUrl": "https://github.com/robavio/fire-calculator-releases/releases/download/v1.6.0/FIRE.Calculator.Setup.1.6.0.exe"
 }
