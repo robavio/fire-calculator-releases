@@ -1,6 +1,6 @@
 {
   "name": "fire-calculator",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "description": "Compound Interest & FIRE Calculator",
   "main": "main.js",
   "scripts": {

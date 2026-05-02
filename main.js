@@ -4,7 +4,7 @@ const https = require('https')
 const fs = require('fs')
 const os = require('os')
 
-const CURRENT_VERSION = '3.5.0'
+const CURRENT_VERSION = '3.6.0'
 
 function createWindow() {
   const win = new BrowserWindow({
