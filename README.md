@@ -1,4 +1,18 @@
-# FIRE Calculator — Windows App
+# FIRE Suite — Windows App
+
+A personal finance desktop app for Windows built with Electron. Includes a FIRE projection calculator, Net Worth tracker, and Budget tracker.
+
+**Current version: 3.6.0**
+
+---
+
+## What's in the app
+
+- **FIRE Calculator** — project your investment pot, model compound growth, and find your financial independence date
+- **Net Worth Tracker** — log your net worth each year across multiple asset categories with charts and projections
+- **Budget Tracker** — monthly income and expense spreadsheet with rolling totals and an all-time summary view
+
+---
 
 ## First time setup (do this once)
 
@@ -8,28 +22,23 @@
 3. Run the installer, click Next through everything
 4. Restart your computer after it finishes
 
-### Step 2 — Get the project files
-Either download this folder as a ZIP, or just make sure you have:
-```
-fire-app/
-  main.js
-  package.json
-  src/
-    index.html
-    icon.ico
-```
+### Step 2 — Install Git
+1. Go to https://git-scm.com/download/win and download the installer
+2. Run it with default settings
+3. Restart your terminal after it finishes
 
-### Step 3 — Open a terminal in the project folder
-1. Open File Explorer and navigate to the `fire-app` folder
-2. Click the address bar at the top, type `cmd` and press Enter
-3. A black terminal window will open
+### Step 3 — Clone this repo
+Open a terminal (press `Win + R`, type `cmd`, press Enter) and run:
+```
+git clone https://github.com/robavio/fire-calculator-releases.git
+cd fire-calculator-releases
+```
 
 ### Step 4 — Install dependencies
-In the terminal, type exactly:
 ```
 npm install
 ```
-Wait for it to finish (may take 1-2 minutes, will download ~200MB)
+Wait for it to finish (may take 1–2 minutes, downloads ~200MB into `node_modules`).
 
 ### Step 5 — Test it works
 ```
@@ -42,51 +51,58 @@ The app should open. Close it when done.
 npm run build
 ```
 This creates a `dist` folder. Inside you'll find:
-- `FIRE Calculator Setup 1.0.0.exe` — the installer you can share and run on any Windows PC
+- `FIRE Calculator Setup 3.6.0.exe` — the installer you can run on any Windows PC
 
 ---
 
 ## Running the app (after building)
-Just double-click `FIRE Calculator Setup 1.0.0.exe` to install it.
+Double-click `FIRE Calculator Setup 3.6.0.exe` to install it.
 It will appear in your Start Menu and on your Desktop.
 
 ---
 
-## Updating the app (how future updates work)
+## Updating to a new version
 
-When we add new features together in Claude:
+When a new version is pushed to this repo:
 
-1. Claude gives you a new `src/index.html` file (or sometimes `main.js`)
-2. You replace the old file with the new one in this folder
-3. Open the terminal in the `fire-app` folder and run:
+1. Open a terminal in the `fire-calculator-releases` folder
+2. Pull the latest code:
+   ```
+   git pull
+   ```
+3. Rebuild:
    ```
    npm run build
    ```
-4. A new `.exe` will appear in the `dist` folder
-5. Run the new installer — it will update the existing installation
+4. Run the new installer from the `dist` folder — it will update the existing installation
 
-### Version numbers
-When we add a new feature, update the version in two places:
-- `package.json` — change `"version": "1.0.0"` to e.g. `"1.1.0"`
-- `main.js` — change `const CURRENT_VERSION = '1.0.0'` to match
+> **Your data is safe across updates.** Budget tracker data, Net Worth entries, and settings are stored locally on your machine (separate from the app files) and are not affected by updates.
 
 ---
 
-## Optional: Automatic update notifications
-The app includes an update checker under Help > Check for updates.
-To enable this properly, you would need a free GitHub account:
-1. Create a repo called `fire-calculator-releases`
-2. Add a file called `latest.json` with this format:
-   ```json
-   {
-     "version": "1.1.0",
-     "notes": "Added salary-linked deposits",
-     "url": "https://github.com/YOUR_USERNAME/fire-calculator-releases/releases"
-   }
-   ```
-3. In `main.js`, replace `YOUR_GITHUB_USERNAME` with your actual GitHub username
-4. When you update the app, update this JSON file too
-5. Users will see a notification popup when they open the app
+## Version history
 
-If you don't want to set up GitHub, the app still works perfectly —
-the update checker just won't notify anyone automatically.
+### v3.6.0
+- Budget tracker now saves all data locally — reopening the app restores everything you entered
+- Budget data persists safely across app updates
+- Years page redesigned with large tile cards — add only the years you need with the "+ Add Year" button
+- Budget table layout tightened to fit the full table on screen without vertical scrolling
+
+### v3.5.0
+- FIRE Suite with compound interest projection, real value line, and withdrawal sustainability
+- Net Worth tracker with category allocation, year-on-year change, and CAGR projection
+- Budget tracker with monthly income/expense grid, rolling totals, and all-time summary
+- Dark/light/auto theme support
+- Help > Check for updates menu item
+
+---
+
+## Notes for developers
+
+**Version numbers** are set in two places — keep them in sync:
+- `package.json` → `"version": "3.6.0"`
+- `main.js` → `const CURRENT_VERSION = '3.6.0'`
+
+**Update checker** reads `latest.json` from this repo via the GitHub API. To notify users of a new version, update that file with the new version number and release notes after pushing a new build.
+
+`node_modules/` and `dist/` are excluded from the repo via `.gitignore`.
