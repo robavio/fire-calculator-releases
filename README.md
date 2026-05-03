@@ -82,6 +82,13 @@ When a new version is pushed to this repo:
 
 ## Version history
 
+### v3.10.0
+- Net Worth categories can now all be removed — no minimum enforced
+- Fixed app freeze bug caused by alert/confirm dialogs — all confirmations now use in-app modals, all notifications use a toast
+- All text sizes unified across every page — nothing below 13px in the interface
+- Home page cards and Budget year tiles enlarged further
+- Budget ← Years button moved to the left side of the nav bar
+
 ### v3.9.0
 - Larger, uniform text hierarchy across all pages (headings, subheadings, labels all bumped up)
 - Budget tracker rows now default to blank labels — name them however you want
