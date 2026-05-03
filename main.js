@@ -4,7 +4,7 @@ const https = require('https')
 const fs = require('fs')
 const os = require('os')
 
-const CURRENT_VERSION = '3.6.0'
+const CURRENT_VERSION = '3.9.0'
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -145,6 +145,9 @@ app.whenReady().then(() => {
     {
       label: 'File',
       submenu: [
+        { label: 'Export Data Backup...', click: () => win.webContents.executeJavaScript('exportBackup()') },
+        { label: 'Import Data Backup...', click: () => win.webContents.executeJavaScript('importBackup()') },
+        { type: 'separator' },
         { role: 'reload', label: 'Reload' },
         { type: 'separator' },
         { role: 'quit', label: 'Exit' }
@@ -161,11 +164,20 @@ app.whenReady().then(() => {
       ]
     },
     {
+      label: 'Navigate',
+      submenu: [
+        { label: '🏠  Home',                click: () => win.webContents.executeJavaScript("nav('home')") },
+        { label: '📈  FIRE Calculator',     click: () => win.webContents.executeJavaScript("nav('fire')") },
+        { label: '💰  Net Worth Tracker',   click: () => win.webContents.executeJavaScript("nav('nw')") },
+        { label: '📊  Budget Tracker',      click: () => win.webContents.executeJavaScript("nav('budget')") },
+      ]
+    },
+    {
       label: 'Help',
       submenu: [
         { label: 'Check for updates', click: () => checkForUpdates(win, true) },
         { type: 'separator' },
-        { label: `Version ${CURRENT_VERSION}`, enabled: false }
+        { label: `v${CURRENT_VERSION}`, enabled: false }
       ]
     }
   ])
